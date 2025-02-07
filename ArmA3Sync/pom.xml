@@ -12,51 +12,60 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dependencies -->
+        <commons.io.version>2.0.1</commons.io.version>
+        <commons.net.version>3.4</commons.net.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <jaxen.version>1.1-beta-6</jaxen.version>
+        <jtattoo.version>1.6.10</jtattoo.version>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <commons.lang3.version>3.17.0</commons.lang3.version>
+        <junique.version>1.0.4</junique.version>
+        <jshortcut.version>0.4-oberzalek</jshortcut.version>
+        <netbeans.swing.outline.version>RELEASE73</netbeans.swing.outline.version>
+        <!-- Plugins -->
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.assembly.plugin.version>3.7.1</maven.assembly.plugin.version>
+        <maven.install.plugin.version>3.1.2</maven.install.plugin.version>
+        <maven.versions.plugin.version>2.18.0</maven.versions.plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.0.1</version>
+            <version>${commons.io.version}</version>
         </dependency>
-
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
-            <version>3.4</version>
+            <version>${commons.net.version}</version>
         </dependency>
-
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
+            <version>${dom4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
-            <version>1.1-beta-6</version>
+            <version>${jaxen.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.jtattoo</groupId>
             <artifactId>JTattoo</artifactId>
-            <version>1.6.10</version>
+            <version>${jtattoo.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb.api.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.17.0</version>
+            <version>${commons.lang3.version}</version>
         </dependency>
-
         <!--
         Local dependencies that are not present in Maven Central
         and are installed into local maven repository from dependencies folder using maven-install-plugin
@@ -64,21 +73,18 @@
         <dependency>
             <groupId>it.sauronsoftware</groupId>
             <artifactId>junique</artifactId>
-            <version>1.0.4</version>
+            <version>${junique.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.jimmc</groupId>
             <artifactId>jshortcut</artifactId>
-            <version>0.4-oberzalek</version>
+            <version>${jshortcut.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-swing-outline</artifactId>
-            <version>RELEASE73</version>
+            <version>${netbeans.swing.outline.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -86,18 +92,22 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${maven.versions.plugin.version}</version>
+            </plugin>
             <!-- Build an executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven.assembly.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -119,12 +129,11 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Install jars from dependencies folder into local maven repository before compile -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven.install.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>install-jar-jshortcut</id>
