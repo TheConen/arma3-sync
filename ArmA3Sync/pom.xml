@@ -9,24 +9,23 @@
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Dependencies -->
-        <commons.io.version>2.0.1</commons.io.version>
-        <commons.net.version>3.4</commons.net.version>
-        <dom4j.version>1.6.1</dom4j.version>
-        <jaxen.version>1.1-beta-6</jaxen.version>
-        <jtattoo.version>1.6.10</jtattoo.version>
+        <commons.io.version>2.18.0</commons.io.version>
+        <commons.net.version>3.11.1</commons.net.version>
+        <dom4j.version>2.1.4</dom4j.version>
+        <jaxen.version>2.0.0</jaxen.version>
+        <jtattoo.version>1.6.13</jtattoo.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <commons.lang3.version>3.17.0</commons.lang3.version>
         <junique.version>1.0.4</junique.version>
         <jshortcut.version>0.4-oberzalek</jshortcut.version>
-        <netbeans.swing.outline.version>RELEASE73</netbeans.swing.outline.version>
+        <netbeans.swing.outline.version>RELEASE240</netbeans.swing.outline.version>
         <!-- Plugins -->
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <maven.assembly.plugin.version>3.7.1</maven.assembly.plugin.version>
-        <maven.install.plugin.version>3.1.2</maven.install.plugin.version>
+        <maven.install.plugin.version>3.1.3</maven.install.plugin.version>
         <maven.versions.plugin.version>2.18.0</maven.versions.plugin.version>
     </properties>
 
@@ -42,7 +41,7 @@
             <version>${commons.net.version}</version>
         </dependency>
         <dependency>
-            <groupId>dom4j</groupId>
+            <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
         </dependency>
@@ -66,6 +65,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-swing-outline</artifactId>
+            <version>${netbeans.swing.outline.version}</version>
+        </dependency>
         <!--
         Local dependencies that are not present in Maven Central
         and are installed into local maven repository from dependencies folder using maven-install-plugin
@@ -80,11 +84,6 @@
             <artifactId>jshortcut</artifactId>
             <version>${jshortcut.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-netbeans-swing-outline</artifactId>
-            <version>${netbeans.swing.outline.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -93,10 +92,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -162,21 +157,6 @@
                             <version>1.0.4</version>
                             <packaging>jar</packaging>
                             <file>${project.basedir}/dependencies/junique-1.0.4.jar</file>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>install-jar-netbeans-swing-outline</id>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <groupId>org.netbeans.api</groupId>
-                            <artifactId>org-netbeans-swing-outline</artifactId>
-                            <version>RELEASE73</version>
-                            <packaging>jar</packaging>
-                            <file>${project.basedir}/dependencies/org-netbeans-swing-outline-RELEASE73.jar</file>
                             <generatePom>true</generatePom>
                         </configuration>
                     </execution>

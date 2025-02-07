@@ -751,7 +751,7 @@ public abstract class AbstractConnexionDAO
 
 			uis = new CountingInputStream(fis) {
 				@Override
-				protected void afterRead(int n) {
+				protected void afterRead(int n) throws IOException {
 					super.afterRead(n);
 					long nbBytes = getByteCount();
 					long endTime = System.nanoTime();
